@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <title>Solitaire CARDTS</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <script src="cardts.min.js"></script>
+    <script src="element.card-t.full.js"></script>
+    <script type="module" src="./solitaire.js"></script>
+    <link rel="stylesheet" type="text/css" href="./solitaire.css" />
+
+    <style id=nthCardSequence>
+        /* CSS can't do nth-child calculations , so JavaScript adds all CSS rules to display cards as a sequence */
+    </style>
+
+    <style id=DropLocations>
+        /* JavaScript dynamicall adds rules where a dragging card can be dropped */
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <cardts-zone id=CardtsHeader>
+            <!-- Cardts with Title Letters are injected here -->
+        </cardts-zone>
+        <div>
+            &lt;card-t&gt; Selection and Drag-Drop interactions
+        </div>
+    </header>
+    <main>
+        <!-- Here is the Solitaire Game -->
+        <cardts-area id=Solitaire>
+            <div id=Deck>
+                <cardts-zone id=Stock> </cardts-zone>
+                <cardts-zone id=Waste> </cardts-zone>
+            </div>
+            <div id=TablePiles>
+                <!-- 8 sequence piles are injected here -->
+            </div>
+            <div id=TableFoundations>
+                <!-- 4 foundation piles are injected here -->
+            </div>
+            <div id=DraggingPile><!-- cards being dragged / dropped into another pile --></div>
+            <div id=SelectionSequenceCards>
+                <!-- outline current card & sequence of cards -->
+            </div>
+            <div id="Instructions">
+                Game logic not implemented. Testing (drag) interactions with cards and piles
+            </div>
+        </cardts-area>
+    </main>
+
+    <script>
+    </script>
+    <footer>&lt;card-t&gt; on GitHub: <a
+            href="https://card-ts.github.io/playingcardts/">https://card-ts.github.io/playingcardts/</a>
+    </footer>
+</body>
+
+</html>

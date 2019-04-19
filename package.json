@@ -1,0 +1,23 @@
+{
+  "name": "solitaire",
+  "version": "1.0.0",
+  "description": "<card-t> Custom Element UI selection and drag-drop interactions",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/card-ts/Solitaire.git"
+  },
+  "keywords": [
+    "javascript",
+    "html"
+  ],
+  "author": "Danny Engelman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/card-ts/Solitaire/issues"
+  },
+  "homepage": "https://github.com/card-ts/Solitaire#readme"
+}
