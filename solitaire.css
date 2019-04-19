@@ -1,4 +1,259 @@
-The file cannot be copied onto itself.
-        0 file(s) copied.
-The file cannot be copied onto itself.
-        0 file(s) copied.
+The file cannot be copied onto itself. 0 file(s) copied. The file cannot be copied onto itself. 0 file(s) copied.
+
+/* 
+    CSS Under Development
+*/
+* {
+    /* sensible default values */
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    user-select: none;
+    overflow: hidden;
+    background: #007D3B;
+    height: 100%;
+    min-height: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    --cardWidth: calc(1vw*calc(99/11));
+    /* --cardWidth: 7vw; */
+    /* --cardWidth: 100%; */
+    --cardPadding: calc(9vw/26);
+    --TableBackground: green;
+    --TableOffsetY: calc(var(--cardWidth)/3);
+    --StockOffsetX: 2px;
+    --StockOffsetY: 6px;
+
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2em;
+
+}
+
+body {
+    /* saves loading an image, looks better than a solid darkgreen background */
+    background-image: url('data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAAAwBACdASoeAB4APikSh0KhoQoCAAwBQllYz41AABFV/n8AItOaJepDavAA/vkKUe5BGtPR5aeKP/4hd7G2///gzv/f1X/gzv/BmUX9cJtST/Z9T/XsQq/MQV+1v8m2uukhu3nFYS/A5iTPpyXsMLAwk6xasWWFDPdx7OkWouLHKfqaoozRIW3R5D5MAA==');
+    background-size: cover;
+}
+
+@media screen and (min-width: 1280px) {
+    body {
+        --cardWidth: 120px;
+    }
+}
+
+header,
+main,
+footer {
+    float: left;
+}
+
+header {
+    width: 100%;
+    /* background: olive; */
+}
+
+main {
+    flex: 1;
+    width: 100%;
+    /* background: var(--TableBackground); */
+    /* height: 70vh; */
+}
+
+footer {
+    width: 100%;
+}
+
+#Instructions {
+    position: absolute;
+    bottom: 5em;
+}
+
+#CardtsHeader {
+    padding: 0;
+    margin: 0 2em;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+
+cardts-card {
+    float: left;
+    width: 100%;
+    cursor: grab;
+    z-index: 2;
+}
+
+img {
+    box-sizing: border-box;
+    border: 4px solid var(--cardBorderColor, transparent);
+    border-radius: 12px;
+    transform: scale(1);
+}
+
+cardts-ZONE {
+    /* to cardts zone template !!!! */
+    width: 100%;
+}
+
+#TablePiles cardts-ZONE[id*='Pile'] {
+    /* to cardts zone template !!!! */
+    width: 100%;
+    /* make sure the whole page height is a drop-zone */
+}
+
+.draggingFromPile CARDTS-CARD:last-child img {
+    /* mark pile where dragging started  */
+    --cardBorderColor: yellowgreen;
+}
+
+.validDropPile {
+    /* mark cards/pile where dragging sequence can be dropped (Solitaire rules) */
+    background: darkgreen;
+}
+
+.notvalidDropPile:not(.draggingFromPile) CARDTS-CARD:last-child img {
+    /* mark cards/pile where dragging sequence should NOT be dropped (Solitaire rules) */
+    --cardBorderColor: red;
+}
+
+#Solitaire {
+    /* 3 column grid */
+    display: grid;
+    grid-template-columns: 1fr 7fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "Deck Table Foundation";
+    grid-column-gap: 1em;
+}
+
+#Deck {
+    /* force Deck cards smaller, because Table cards are smaller with grid-padding between piles */
+    padding: 0 5%;
+}
+
+/* locations where a card can be dropped on Table and Foundations */
+[id^="Table"] CARDTS-ZONE.dragover:last-child {
+    --cardBorderColor: yellowgreen;
+    transform: scale(1);
+    pointer-events: none;
+}
+
+[id^="Table"] CARDTS-ZONE :nth-child(1) {
+    /* first card in ZONE is not rotated , prevent any style="" declaration with !important */
+    transform: rotate(0deg) !important;
+}
+
+#TableFoundations CARDTS-ZONE :nth-child(1) {
+    /* first card in foundation pile is suit card F0,F1,F2,F3 */
+    pointer-events: none;
+}
+
+#Deck CARDTS-ZONE,
+#TablePiles CARDTS-ZONE,
+#TableFoundations CARDTS-ZONE,
+#DraggingPile CARDTS-ZONE {
+    /* relative container so absolute positioned cards are contained in the container */
+    position: relative;
+}
+
+#Deck CARDTS-CARD:nth-child(n+2),
+#TablePiles CARDTS-CARD,
+#TableFoundations CARDTS-CARD:nth-child(n+2),
+#DraggingPile CARDTS-CARD {
+    /* display additional cards on top */
+    position: absolute;
+    left: 0;
+}
+
+#Stock {
+    min-height: calc(var(--cardWidth)*1.3);
+}
+
+#Stock :nth-child(1) {
+    top: calc(3 * var(--StockOffsetY));
+    left: calc(3 * var(--StockOffsetX));
+}
+
+#Stock :nth-child(2) {
+    top: calc(2 * var(--StockOffsetY));
+    left: calc(2 * var(--StockOffsetX));
+}
+
+#Stock :nth-child(3) {
+    top: calc(1 * var(--StockOffsetY));
+    left: calc(1 * var(--StockOffsetX));
+}
+
+#Waste {
+    margin-top: var(--TableOffsetY);
+}
+
+/* Waste nth-child declarations are injected with JS */
+/* #Waste :nth-last-child(2) {
+    top: calc(1 * var(--TableOffsetY));
+}
+
+#Waste :nth-last-child(1) {
+    top: calc(2 * var(--TableOffsetY));
+}
+
+*/
+
+#TablePiles {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 1fr;
+    grid-template-areas: ". . . . . . . .";
+    grid-gap: 6px;
+}
+
+#Deck,
+#TableFoundations {
+    /*  display 4 foundations in one column */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#TableFoundations CARDTS-ZONE CARDTS-CARD:nth-child(1) {
+    /* style first foundation 'card' the foundation suit */
+    filter: grayscale(100%) opacity(80%);
+}
+
+#DraggingPile {
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* cursor: grabbing; */
+    visibility: hidden;
+    width: var(--cardWidth, '50px');
+    z-index: 10;
+    /* border: 2px solid hotpink; */
+}
+
+#SelectionSequenceCards {
+    position: absolute;
+    left: var(--SelectionBorderBoxLeft, 0);
+    top: var(--SelectionBorderBoxTop, 0);
+    border: var(--SelectionBorder, 2px solid blue);
+    width: var(--SelectionBorderBoxWidth);
+    height: var(--SelectionBorderBoxHeight);
+    border-radius: 12px;
+    cursor: grab;
+    z-index: var(--SelectionBorderBoxZindex, 25);
+}
+
+#PublishDate {
+    position: absolute;
+    right: 1em;
+    bottom: 1em;
+    font-size: .5em;
+}
