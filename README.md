@@ -6,6 +6,11 @@
 
 ## https://card-ts.github.io/Solitaire/
 
+### Using the &lt;card&gt; Custom Element from: https://github.com/card-ts/playingcardts
+
+<hr>
+<hr>
+
 ## JavaScript Solitaire implementations on the web
 
 * latest React version - https://codepen.io/bfa/pen/ggGYeE
@@ -53,4 +58,4 @@
     * 52 small cards in one 22 KB PNG sprite
 
 <hr>
-Published: 2019-04-19 17:26 
+Published: 2019-04-19 17:38 
