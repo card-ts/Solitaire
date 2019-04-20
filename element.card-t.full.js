@@ -55,7 +55,7 @@
             dispatch(this, 'DISCONNECTEDCARDT');
         }
     };
-    
+
     try {
         customElements.define('card-t', CARDTElement);//todo check if already defined
     } catch (e) {
