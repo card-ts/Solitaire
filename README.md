@@ -6,7 +6,7 @@
 
 ## https://card-ts.github.io/Solitaire/
 
-### Using the &lt;card&gt; Custom Element from: https://github.com/card-ts/playingcardts
+### Using the &lt;card-t&gt; Custom Element from: https://github.com/card-ts/playingcardts
 
 <hr>
 <hr>
@@ -58,4 +58,4 @@
     * 52 small cards in one 22 KB PNG sprite
 
 <hr>
-Published: 2019-04-19 17:38 
+Published: 2019-04-20 16:20 
