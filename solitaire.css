@@ -33,13 +33,20 @@ body {
     text-shadow: 1px 1px 1px black;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2em;
-
 }
 
 body {
     /* saves loading an image, looks better than a solid darkgreen background */
     background-image: url('data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAAAwBACdASoeAB4APikSh0KhoQoCAAwBQllYz41AABFV/n8AItOaJepDavAA/vkKUe5BGtPR5aeKP/4hd7G2///gzv/f1X/gzv/BmUX9cJtST/Z9T/XsQq/MQV+1v8m2uukhu3nFYS/A5iTPpyXsMLAwk6xasWWFDPdx7OkWouLHKfqaoozRIW3R5D5MAA==');
     background-size: cover;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    color: blue;
+    /* text-shadow: 1px 1px 1px white; */
 }
 
 @media screen and (min-width: 1280px) {
