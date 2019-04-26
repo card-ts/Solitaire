@@ -58,4 +58,4 @@
     * 52 small cards in one 22 KB PNG sprite
 
 <hr>
-Published: 2019-04-26 14:10 
+Published: 2019-04-26 14:13 
