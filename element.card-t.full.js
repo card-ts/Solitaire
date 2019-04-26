@@ -45,6 +45,7 @@
             }
         }
         connectedCallback() {
+            props(this);
             drawCard(this);
             dispatch(this, 'CONNECTEDCARDT');
         }
